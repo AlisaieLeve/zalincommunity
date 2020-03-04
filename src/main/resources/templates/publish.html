@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>学习笔记</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+
+    <script src="/js/bootstrap.js" type="application/javascript"></script>
+</head>
+<body style="background-color: #efefef">
+
+<div th:insert="~{navigation :: nav}"></div>
+
+<div class="container-fluid main" style="background-color: white">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <!--                <hr>            -->
+            <form action="/publish" method="post">
+
+                <input type="hidden" name="id" th:value="${id}">
+                <div class="form-group">
+                    <label for="title">问题标题</label>
+                    <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="问题标题">
+                </div>
+                <div class="form-group">
+                    <label for="title">问题主体（参见右侧提示）</label>
+                    <textarea name="description" th:text="${description}" id="description" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="title">添加标签</label>
+                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="输入标签，以“,”分隔">
+                </div>
+                <span class="alert alert-danger" th:if="${error != null } " th:text="${error}"></span>
+                <button type="submit" class="btn btn-success btn-publish">成功发布</button>
+            </form>
+
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <h3>问题发起指南</h3>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
